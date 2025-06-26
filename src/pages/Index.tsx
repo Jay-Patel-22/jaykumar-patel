@@ -91,19 +91,21 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/20 to-slate-900/50"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 p-1">
-              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center">
-                <span className="text-3xl font-bold text-blue-400">JP</span>
-              </div>
+            <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 p-1">
+              <img 
+                src="https://i.postimg.cc/Hk3bygsS/Whats-App-Image-2025-05-17-at-16-00-19-08c6f4b9.jpg" 
+                alt="Jaykumar Nagji Patel"
+                className="w-full h-full rounded-full object-cover"
+              />
             </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent leading-tight">
             Jaykumar Nagji Patel
           </h1>
-          <h2 className="text-2xl md:text-3xl text-blue-300 mb-6 font-light">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-blue-300 mb-6 font-light">
             Cloud & DevOps Engineer
           </h2>
-          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
             Building scalable, secure, and automated infrastructure in the cloud. 
             3+ years of hands-on experience across AWS, GCP, and automation tooling.
           </p>
