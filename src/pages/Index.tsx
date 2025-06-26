@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +8,74 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Cloud, Code, Server, GitBranch, Database, Monitor, Mail, MapPin, Calendar, Award, ExternalLink, Download, Linkedin } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
 const Index = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.send(
+        'service_cgr72bl', // Service ID
+        'template_2so8y2r', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Jaykumar Nagji Patel',
+        },
+        'ConQIc9sfLsT0_2oV' // Public Key
+      );
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = 'https://i.postimg.cc/gk3xCZV7/Patel-Jaykumar-Resume.png';
+    link.download = 'Jaykumar_Nagji_Patel_Resume.png';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const skills = [{
     name: "Terraform",
     category: "IaC",
@@ -93,7 +161,12 @@ const Index = () => {
               <Code className="mr-2 h-5 w-5" />
               Explore My Work
             </Button>
-            <Button variant="outline" size="lg" className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg transition-all duration-300">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg transition-all duration-300"
+              onClick={handleResumeDownload}
+            >
               <Download className="mr-2 h-5 w-5" />
               Download Resume
             </Button>
@@ -287,23 +360,52 @@ const Index = () => {
               <CardHeader>
                 <CardTitle className="text-teal-400">Send a Message</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <Label htmlFor="name" className="text-slate-300">Name</Label>
-                  <Input id="name" placeholder="Your name" className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400" />
-                </div>
-                <div>
-                  <Label htmlFor="email" className="text-slate-300">Email</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400" />
-                </div>
-                <div>
-                  <Label htmlFor="message" className="text-slate-300">Message</Label>
-                  <Textarea id="message" placeholder="Your message..." rows={4} className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400 resize-none" />
-                </div>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white transition-all duration-300">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Send Message
-                </Button>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="name" className="text-slate-300">Name</Label>
+                    <Input 
+                      id="name" 
+                      placeholder="Your name" 
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="email" className="text-slate-300">Email</Label>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="your.email@example.com" 
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="message" className="text-slate-300">Message</Label>
+                    <Textarea 
+                      id="message" 
+                      placeholder="Your message..." 
+                      rows={4} 
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400 resize-none"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white transition-all duration-300"
+                    disabled={isSubmitting}
+                  >
+                    <Mail className="mr-2 h-4 w-4" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>
