@@ -9,48 +9,43 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Cloud, Code, Server, GitBranch, Database, Monitor, Mail, MapPin, Calendar, Award, ExternalLink, Download, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 const Index = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value
     });
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     console.log('Form data:', formData);
     console.log('Attempting to send email...');
-
     try {
-      const result = await emailjs.send(
-        'service_cgr72bl', // Service ID
-        'template_2so8y2r', // Template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Jaykumar Nagji Patel',
-        },
-        'ConQIc9sfLsT0_2oV' // Public Key
+      const result = await emailjs.send('service_cgr72bl',
+      // Service ID
+      'template_2so8y2r',
+      // Template ID
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Jaykumar Nagji Patel'
+      }, 'ConQIc9sfLsT0_2oV' // Public Key
       );
-
       console.log('EmailJS result:', result);
-
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon."
       });
 
       // Reset form
@@ -64,13 +59,12 @@ const Index = () => {
       toast({
         title: "Failed to send message",
         description: "Please try again or contact me directly via email.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
   const handleResumeDownload = () => {
     const link = document.createElement('a');
     link.href = 'https://i.postimg.cc/gk3xCZV7/Patel-Jaykumar-Resume.png';
@@ -80,7 +74,6 @@ const Index = () => {
     link.click();
     document.body.removeChild(link);
   };
-
   const skills = [{
     name: "Terraform",
     category: "IaC",
@@ -151,9 +144,7 @@ const Index = () => {
               <img src="https://i.postimg.cc/Hk3bygsS/Whats-App-Image-2025-05-17-at-16-00-19-08c6f4b9.jpg" alt="Jaykumar Nagji Patel" className="w-full h-full rounded-full object-cover" />
             </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent leading-tight font-extrabold lg:text-7xl mx-[0.5px] my-[0.5px]">
-            Jaykumar Nagji Patel
-          </h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent leading-tight font-extrabold lg:text-7xl mx-[0.5px] my-[0.5px]">Jaykumar Patel</h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl text-blue-300 mb-6 font-light">
             Cloud & DevOps Engineer
           </h2>
@@ -166,12 +157,7 @@ const Index = () => {
               <Code className="mr-2 h-5 w-5" />
               Explore My Work
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg transition-all duration-300"
-              onClick={handleResumeDownload}
-            >
+            <Button variant="outline" size="lg" className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-8 py-3 text-lg transition-all duration-300" onClick={handleResumeDownload}>
               <Download className="mr-2 h-5 w-5" />
               Download Resume
             </Button>
@@ -369,44 +355,17 @@ const Index = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <Label htmlFor="name" className="text-slate-300">Name</Label>
-                    <Input 
-                      id="name" 
-                      placeholder="Your name" 
-                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                    />
+                    <Input id="name" placeholder="Your name" className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400" value={formData.name} onChange={handleInputChange} required />
                   </div>
                   <div>
                     <Label htmlFor="email" className="text-slate-300">Email</Label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="your.email@example.com" 
-                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                    />
+                    <Input id="email" type="email" placeholder="your.email@example.com" className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400" value={formData.email} onChange={handleInputChange} required />
                   </div>
                   <div>
                     <Label htmlFor="message" className="text-slate-300">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Your message..." 
-                      rows={4} 
-                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400 resize-none"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                    />
+                    <Textarea id="message" placeholder="Your message..." rows={4} className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-400 resize-none" value={formData.message} onChange={handleInputChange} required />
                   </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white transition-all duration-300"
-                    disabled={isSubmitting}
-                  >
+                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white transition-all duration-300" disabled={isSubmitting}>
                     <Mail className="mr-2 h-4 w-4" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
@@ -438,5 +397,4 @@ const Index = () => {
       </footer>
     </div>;
 };
-
 export default Index;
