@@ -30,8 +30,11 @@ const Index = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    console.log('Form data:', formData);
+    console.log('Attempting to send email...');
+
     try {
-      await emailjs.send(
+      const result = await emailjs.send(
         'service_cgr72bl', // Service ID
         'template_2so8y2r', // Template ID
         {
@@ -42,6 +45,8 @@ const Index = () => {
         },
         'ConQIc9sfLsT0_2oV' // Public Key
       );
+
+      console.log('EmailJS result:', result);
 
       toast({
         title: "Message sent successfully!",
@@ -433,4 +438,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
