@@ -116,10 +116,15 @@ const Index = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-slate-300 leading-relaxed">
-                Results-driven Cloud & DevOps Engineer with 3+ years of experience designing secure, 
-                scalable cloud-native systems across AWS and GCP. Skilled in Infrastructure as Code (Terraform), 
-                containerization (Docker), and CI/CD automation. Proven ability to reduce deployment time by 50%, 
-                enforce security best practices, and maintain 99.9% uptime through proactive monitoring and Linux system administration.
+                🚀 <strong>Cloud Infrastructure Architect</strong> with 3+ years transforming how organizations deploy and scale in the cloud. 
+                I don't just manage infrastructure—I engineer solutions that <span className="text-blue-400 font-semibold">slash deployment times by 50%</span> and 
+                maintain rock-solid <span className="text-teal-400 font-semibold">99.9% uptime</span>.
+                <br /><br />
+                💡 My superpower? Turning complex cloud challenges into elegant, automated solutions using Terraform, Docker, and Kubernetes. 
+                From orchestrating <span className="text-blue-400 font-semibold">100+ microservices</span> to building MLOps pipelines that save hours of manual work, 
+                I bridge the gap between development velocity and operational excellence.
+                <br /><br />
+                🔒 Security isn't an afterthought—it's built into every pipeline, every deployment, and every line of Infrastructure as Code I write.
               </CardContent>
             </Card>
 
