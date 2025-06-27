@@ -144,7 +144,7 @@ const Index = () => {
               <img src="https://i.postimg.cc/Hk3bygsS/Whats-App-Image-2025-05-17-at-16-00-19-08c6f4b9.jpg" alt="Jaykumar Nagji Patel" className="w-full h-full rounded-full object-cover" />
             </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent leading-tight font-extrabold lg:text-7xl mx-[0.5px] my-[0.5px]">Jaykumar Patel</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-teal-300 to-blue-500 bg-clip-text text-transparent leading-tight font-extrabold mx-0 my-0 lg:text-5xl">Jaykumar Patel</h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl text-blue-300 mb-6 font-light">
             Cloud & DevOps Engineer
           </h2>
