@@ -35,7 +35,7 @@ const Index = () => {
     try {
       const result = await emailjs.send(
         'service_cgr72bl',
-        'template_2so8y2r',
+        'template_cl3ihf5',
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -421,15 +421,26 @@ const Index = () => {
             <img 
               src="https://i.postimg.cc/Hk3bygsS/Whats-App-Image-2025-05-17-at-16-00-19-08c6f4b9.jpg" 
               alt="Jaykumar Nagji Patel" 
-              className="w-full h-full rounded-full object-cover"
+              className="w-full h-full rounded-full object-cover object-top scale-125"
+              style={{ objectPosition: '50% 30%' }}
             />
           </div>
           <h1 className="text-2xl font-bold text-white mb-2">Jaykumar Patel</h1>
           <p className="text-gray-400 mb-4">DevOps | SRE | Cloud Engineer</p>
           
           <div className="flex justify-center space-x-4 mb-6">
-            <Github className="w-5 h-5 text-gray-400 hover:text-orange-400 cursor-pointer transition-colors" />
-            <Linkedin className="w-5 h-5 text-gray-400 hover:text-orange-400 cursor-pointer transition-colors" />
+            <a href="https://github.com/Jay-Patel-22" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-1 text-gray-400 hover:text-orange-400 cursor-pointer transition-colors">
+                <Github className="w-5 h-5" />
+                <span className="text-sm">🐙</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/jayp22/" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-1 text-gray-400 hover:text-orange-400 cursor-pointer transition-colors">
+                <Linkedin className="w-5 h-5" />
+                <span className="text-sm">💼</span>
+              </div>
+            </a>
           </div>
 
           <div className="space-y-4 text-left">
