@@ -91,16 +91,32 @@ const Index = () => {
 
   const projects = [
     {
-      title: "MLOps Model Deployment Pipeline",
-      description: "Deployed a CI/CD-enabled MLOps pipeline on AWS using SageMaker, ECR, and Step Functions—reduced model deployment time by 40%.",
-      tech: ["AWS SageMaker", "ECR", "Step Functions", "Docker", "Python"],
-      impact: "40% faster deployments"
+      title: "🏗️ Infrastructure as Code Templates",
+      description: "Developed modular Terraform templates with integrated security scanning, reducing infrastructure setup time by 60% for 20+ microservices.",
+      tech: ["Terraform", "AWS", "Security Scanning", "Docker", "Kubernetes"],
+      impact: "60% setup time reduction",
+      icon: "🚀"
     },
     {
-      title: "Infrastructure as Code for DevOps Pipelines",
-      description: "Developed modular, secure Terraform templates for 20+ services, reducing infrastructure setup time by 60%.",
-      tech: ["Terraform", "AWS", "GitHub Actions", "Helm", "Kubernetes"],
-      impact: "60% setup time reduction"
+      title: "🤖 Intelligent Outlook Add-in with AI Integration",
+      description: "Built a JavaScript-based Outlook add-in that leverages OpenAI and Zoho Creator APIs to automate workflow processes. This project showcased my ability to work across the full stack while maintaining DevOps best practices.",
+      tech: ["JavaScript", "OpenAI API", "Zoho Creator", "REST APIs", "Outlook Add-in"],
+      impact: "Full-stack automation",
+      icon: "⚡"
+    },
+    {
+      title: "🔄 MLOps Model Deployment Pipeline",
+      description: "Designed and implemented an automated MLOps pipeline on AWS using SageMaker, ECR, and Step Functions. Achieved 40% reduction in manual model deployment time.",
+      tech: ["AWS SageMaker", "ECR", "Step Functions", "Docker", "Python"],
+      impact: "40% faster deployments",
+      icon: "🎯"
+    },
+    {
+      title: "☁️ Cloud-Native Microservices Platform",
+      description: "Designed a complete cloud-native platform with automated scaling, monitoring, and self-healing capabilities. Achieved 99.95% uptime.",
+      tech: ["Kubernetes", "Docker", "Prometheus", "Grafana", "Auto-scaling"],
+      impact: "99.95% uptime",
+      icon: "🛡️"
     }
   ];
 
@@ -272,7 +288,10 @@ const Index = () => {
               {projects.map((project, index) => (
                 <Card key={index} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300">
                   <CardHeader>
-                    <CardTitle className="text-orange-400">{project.title}</CardTitle>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">{project.icon}</span>
+                      <CardTitle className="text-orange-400">{project.title}</CardTitle>
+                    </div>
                     <Badge variant="outline" className="border-teal-400 text-teal-400 w-fit">
                       {project.impact}
                     </Badge>
